@@ -1,5 +1,5 @@
 
-import {redirect, useNavigate, useActionData } from 'react-router-dom';
+import {redirect, useNavigate, useActionData, useNavigation } from 'react-router-dom';
 
 import NewPostForm from '../components/NewPostForm';
 import { savePost } from '../util/api';
@@ -7,7 +7,7 @@ import { savePost } from '../util/api';
 function NewPostPage() {
   const data = useActionData()
   const navigate = useNavigate();
-
+const navigation = useNavigation()
  
 
   function cancelHandler() {
@@ -19,7 +19,7 @@ function NewPostPage() {
       {data && data.status && <p>{data.message}</p>}
       <NewPostForm
         onCancel={cancelHandler}
-        submitting={false}
+        submitting={navigation.state==='submitting'}
       />
     </>
   );
