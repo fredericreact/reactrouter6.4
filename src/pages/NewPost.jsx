@@ -1,11 +1,11 @@
 
-import {redirect, useNavigate } from 'react-router-dom';
+import {redirect, useNavigate, useActionData } from 'react-router-dom';
 
 import NewPostForm from '../components/NewPostForm';
 import { savePost } from '../util/api';
 
 function NewPostPage() {
-
+  const data = useActionData()
   const navigate = useNavigate();
 
  
@@ -16,7 +16,7 @@ function NewPostPage() {
 
   return (
     <>
- 
+      {data && data.status && <p>{data.message}</p>}
       <NewPostForm
         onCancel={cancelHandler}
         submitting={false}
@@ -37,7 +37,7 @@ try{
 await savePost(post)
 } catch(err) {
   if(err.status ===422) {
-    throw err;
+    return err;
   }
   throw err
 }
