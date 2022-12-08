@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter, createRoutesFromElements,Route, Routes } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements,Route } from 'react-router-dom';
 
 import BlogLayout from './pages/BlogLayout';
 import BlogPostsPage, {loader as blogPostsLoader} from './pages/BlogPosts';
